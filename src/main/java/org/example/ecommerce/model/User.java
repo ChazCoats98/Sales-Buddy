@@ -24,7 +24,7 @@ public class User {
     message = "Invalid password. Password must contain atleast 1 of the following: " +
             "uppercase letter, lowercase letter, number, special character")
     private String password;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Order> orders = new HashSet<>();
 
     public User() {
