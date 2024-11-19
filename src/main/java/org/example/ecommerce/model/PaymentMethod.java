@@ -42,10 +42,11 @@ public class PaymentMethod {
         return cardNumber;
     }
 
-    private void setCardNumber(String cardNumber) {
+    private void setCardNumberAndType(String cardNumber) {
         Pattern visaPattern = Pattern.compile("^4[0-9]{12}(?:[0-9]{3})?$");
         Pattern mastercardPattern = Pattern.compile("^5[1-5][0-9]{14}$");
         Pattern amexPattern = Pattern.compile("^3[47][0-9]{13}$");
+        Pattern discoverPattern = Pattern.compile("^6(?:011|5[0-9]{2})[0-9]{12}$");
 
         if (visaPattern.matcher(cardNumber).find()) {
             this.cardNumber = cardNumber;
@@ -56,10 +57,33 @@ public class PaymentMethod {
         } else if (amexPattern.matcher(cardNumber).find()) {
             this.cardNumber = cardNumber;
             this.cardType = "American Express";
+        } else if(discoverPattern.matcher(cardNumber).find()) {
+            this.cardNumber = cardNumber;
+            this.cardType = "Discover";
+
+        } else {
+            throw new IllegalArgumentException("Error. Invalid card type");
         }
-
-
     }
 
+    private String getCardType() {
+        return cardType;
+    }
+
+    private String getZipCode() {
+        return zipCode;
+    }
+
+    private void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    private String getCvv() {
+        return cvv;
+    }
+
+    private void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
 
 }
