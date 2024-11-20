@@ -22,7 +22,7 @@ public class Order {
     @NotNull
     private Date orderDate;
     @NotNull
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
     @NotNull
     private Address shippingAddress;
     @NotNull
@@ -52,11 +52,27 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    private String getPaymentMethod() {
+    private PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
 
-    private void setPaymentMethod() {
+    private void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 
+    private Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    private void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
+    private Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    private void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
     }
 }
